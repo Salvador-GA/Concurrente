@@ -1,1 +1,1 @@
-Ejemplos de el problema y solución de la explución mutua
+Ejemplos de el problema y solución de la exclusión mutua
