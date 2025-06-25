@@ -1,6 +1,7 @@
 /**
  * @file mutex_ejemplo.c
  * @brief Ejemplo de uso de mutex para exclusión mutua entre hilos.
+ * @author Salvador Gonzalez Arellano
  */
 
 #include <stdio.h>
