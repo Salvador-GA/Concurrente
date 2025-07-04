@@ -1,9 +1,12 @@
-El problema de los filósofos comensales consiste en un grupo de filósofos sentados alrededor de una mesa circular. Entre cada par de filósofos hay un tenedor. Para comer, un filósofo necesita tomar ambos tenedores a su izquierda y derecha. Cuando termina de comer, los deja y vuelve a pensar.
+## 🍽️ Problema de los Filósofos Comensales
 
-El problema busca evitar:
+El problema de los **filósofos comensales** modela a cinco filósofos sentados alrededor de una mesa circular. Cada filósofo alterna entre pensar y comer. Para comer, un filósofo necesita dos tenedores: el de su izquierda y el de su derecha. Sin embargo, entre cada dos filósofos hay un solo tenedor.
 
-Interbloqueo (deadlock): que todos los filósofos tomen un tenedor y esperen indefinidamente por el otro.
+### Objetivos:
+- Evitar el **interbloqueo** (deadlock), en el que todos los filósofos toman un tenedor y esperan el otro indefinidamente.
+- Evitar la **inanición** (starvation), en la que uno o más filósofos nunca logran comer.
+- Coordinar el acceso concurrente a los recursos (tenedores) de forma segura.
 
-Inanición (starvation): que algunos filósofos nunca logren comer.
-
-Este problema es una metáfora para la gestión de recursos compartidos en sistemas concurrentes y cómo coordinar su uso sin conflictos.
+### Aplicaciones comunes:
+- Acceso a recursos limitados en sistemas distribuidos
+- Planificación de tareas con múltiples dependencias
