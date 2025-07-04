@@ -20,7 +20,7 @@ int extraccion = 0;             // Indice de extraccion
 
 sem_t espacios_libres;          // Semoforo para controlar espacios libres
 sem_t elementos_disponibles;    // Semoforo para controlar productos disponibles
-pthread_mutex_t mutex;          // Candado para la sección crítica
+pthread_mutex_t mutexBuffer;    // Candado para la sección crítica
 
 /**
  * @brief Función del productor. Produce un total de PRODUCCIONES.
@@ -32,9 +32,9 @@ void* productor(void* arg) {
     for (int i = 0; i < PRODUCCIONES; i++) {
         producto = (rand() % 50) + 1;
         sem_wait(&espacios_libres);         // Esperar un espacio libre
-        pthread_mutex_lock(&mutex);         // Entrar a la sección crítica
+        pthread_mutex_lock(&mutexBuffer);   // Entrar a la sección crítica
         buffer[insercion] = producto;       // Insertar producto
-        pthread_mutex_unlock(&mutex);       // Salir de la sección crítica
+        pthread_mutex_unlock(&mutexBuffer); // Salir de la sección crítica
         sem_post(&elementos_disponibles);   // Indicar que hay un nuevo producto
         printf("Productor: inserto %d en posicion %d\n", producto, insercion);
         insercion = (insercion + 1) % TAM_BUFFER;   // Avanzar circularmente
@@ -52,9 +52,9 @@ void* consumidor(void* arg) {
     int producto;
     for (int i = 0; i < PRODUCCIONES; i++) {
         sem_wait(&elementos_disponibles);   // Esperar un producto disponible
-        pthread_mutex_lock(&mutex);         // Entrar a la sección crítica
+        pthread_mutex_lock(&mutexBuffer);   // Entrar a la sección crítica
         producto = buffer[extraccion];      // Extraer producto
-        pthread_mutex_unlock(&mutex);       // Salir de la sección crítica
+        pthread_mutex_unlock(&mutexBuffer); // Salir de la sección crítica
         sem_post(&espacios_libres);         // Indicar que hay un nuevo espacio libre
         printf("Consumidor: consumio %d de posicion %d\n", producto, extraccion);
         extraccion = (extraccion + 1) % TAM_BUFFER; // Avanzar circularmente
@@ -73,7 +73,7 @@ int main() {
     // Inicializar semáforos y mutex
     sem_init(&espacios_libres, 0, TAM_BUFFER);
     sem_init(&elementos_disponibles, 0, 0);
-    pthread_mutex_init(&mutex, NULL);
+    pthread_mutex_init(&mutexBuffer, NULL);
 
     // Crear hilos
     pthread_create(&hProductor, NULL, productor, NULL);
@@ -86,7 +86,7 @@ int main() {
     // Limpiar recursos
     sem_destroy(&espacios_libres);
     sem_destroy(&elementos_disponibles);
-    pthread_mutex_destroy(&mutex);
+    pthread_mutex_destroy(&mutexBuffer);
 
     return 0;
 }
