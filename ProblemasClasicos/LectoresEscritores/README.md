@@ -1,4 +1,4 @@
-📚 Problema de Lectores y Escritores
+## 📚 Problema de Lectores y Escritores
 El problema de los lectores y escritores es un problema clásico de sincronización en sistemas concurrentes. Modela una situación en la que múltiples procesos (lectores y escritores) desean acceder simultáneamente a un recurso compartido (por ejemplo, una base de datos o archivo). Los lectores solo necesitan leer el recurso (sin modificarlo), mientras que los escritores requieren acceso exclusivo para modificarlo.
 
 ## Objetivos
