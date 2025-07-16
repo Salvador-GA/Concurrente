@@ -32,7 +32,7 @@ pthread_barrier_t barrera;      // Barrera para sincronización de hilos
 void* sumar_bloque(void* arg) {
     int indice = *(int*)arg;
     int paso = TAM_ARREGLO / NUM_HILOS;
-    int inicio = indice * paso + 1;
+    int inicio =  (indice == 0) ? 0 : indice * paso + 1;
     int fin = (indice == NUM_HILOS - 1) ? TAM_ARREGLO : (indice + 1) * paso;
 
     int suma = 0;
