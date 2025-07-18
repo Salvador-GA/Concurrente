@@ -7,6 +7,14 @@
  * Aplica un filtro promedio 3x3 por canal (R, G, B) usando múltiples hilos.
  * Sincroniza las fases usando pthread_barrier_t.
  * Guarda el resultado como imagen PNG usando stb_image_write.h.
+ * 
+ * Para compilar el programa: 
+ *      gcc -o Ej3FiltroImagen Ej3FiltroImagen.c -lpthread -lm
+ * Para ejecutarlo:
+ *      ./Ej3FiltroImagen entrada.jpg salida.jpg 10
+ *          - entrada.jpg, imagend e entrada, debe existir
+ *          - salida.jpg nombre del archivo de salida (puede o no existir)
+ *          - 10, numero de iteraciones del filtro
  */
 
 #define STB_IMAGE_IMPLEMENTATION
