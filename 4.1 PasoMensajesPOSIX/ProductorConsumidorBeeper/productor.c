@@ -5,6 +5,7 @@
  * Este programa implementa un productor que genera tareas aleatorias para dos buzones
  * (`/buzon1` y `/buzon2`) y notifica a través del buzón `/beeper` cuál buzón ha recibido una tarea.
  * Así, los consumidores pueden esperar eficientemente en el beeper en lugar de bloquearse en cada buzón.
+ * @author Salvador Gonzalez Arellano
  */
 
 #include <stdio.h>
