@@ -7,6 +7,7 @@
  * que el proceso se bloquee esperando directamente en los buzones de trabajo.
  * 
  * Se debe proporcionar un nombre de consumidor como argumento.
+ * @author Salvador Gonzalez Arellano
  */
 
 #include <stdio.h>
